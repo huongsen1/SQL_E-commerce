@@ -1,6 +1,6 @@
 -- bigquery: ga_session
 
-----------Query 01: Calculate total visit, pageview, transactiON for Jan, Feb AND March 2017 (ORDER BY month)
+----------Query 01: Calculate total visit, pageview, transaction for Jan, Feb and March 2017 (ORDER BY month)
 
 SELECT 
   FORMAT_DATE('%Y%m',parse_date('%Y%m%d',date)) AS month,
@@ -107,7 +107,7 @@ GROUP BY month;
 
 
 ----------Query 06: Average amount of money spent per session. Only include purchaser data in July 2017
-				-- avg_spend_per_sessiON = total revenue/ total visit
+				-- avg_spend_per_session = total revenue/ total visit
 SELECT 
   FORMAT_DATE('%Y%m',parse_date('%Y%m%d',date)) AS month,
   ROUND(
@@ -123,7 +123,7 @@ GROUP BY month;
 
 
 ----------Query 07: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017. 
-				-- Output should show product name AND the quantity wAS ordered.
+				-- Output should show product name and the quantity was ordered.
 SELECT
   product.v2ProductName AS other_purchased_products,
   SUM(product.productQuantity) AS quantity
@@ -145,8 +145,8 @@ GROUP BY product.v2ProductName
 ORDER BY quantity DESC;
 
 
-----------Query 08: Calculate cohort map from product view to addtocart to purchase in Jan, Feb AND March 2017. 
-				-- For example, 100% product view then 40% add_to_cart AND 10% purchase.
+----------Query 08: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. 
+				-- For example, 100% product view then 40% add_to_cart and 10% purchase.
 				-- Add_to_cart_rate = number product  add to cart/number product view. 
 				-- Purchase_rate = number product purchase/number product view.
 				-- The output should be calculated in product level. 
